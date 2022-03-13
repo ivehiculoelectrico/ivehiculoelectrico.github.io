@@ -1,0 +1,62 @@
+{% include 'head.html' %}
+
+<body>
+    <header class="py-5">
+        <h1 class="text-center">Tienda
+            <span class="text-primary">Asolear</span>
+        </h1>
+    </header> <!-- Inicio de navegacion-->
+    <div class="border-top py-4">
+        <div class="navbar navbar-expand-lg container navbar-light">
+            <a class="navbar-brand nombre-sitio d-lg-none fs-2 fw-bold text-uppercase" href="index.html">
+                Tienda Asolear
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navegacion">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navegacion" class="collapse navbar-collapse">
+                <nav class="navbar-nav container d-flex flex-md-row justify-content-md-between text-center">
+                    {% for seccion, items in datos | groupby('seccion') %}
+                    <a class="text-dark text-decoration-none"
+                        onclick="document.getElementById('{{seccion}}-tab').click()" href="#">{{seccion}}</a>
+                    {% endfor %}
+                    <a class="text-dark text-decoration-none"
+                        onclick="document.getElementById('modal_contacto_button').click()" href="#">Contacto</a>
+                </nav>
+            </div>
+        </div>
+    </div> <!-- Fin de navegacion-->
+
+
+
+    <ul hidden class="nav nav-tabs" id="myTab" role="tablist">
+        {% for seccion, items in datos | groupby('seccion') %}
+        <li class="nav-item" role="presentation">
+            {% if loop.index ==1 %}
+            <button class="nav-link active" id="{{seccion}}-tab" data-bs-toggle="tab" data-bs-target="#{{seccion}}" type="button"
+                role="tab" aria-controls="{{seccion}}" aria-selected="true">{{seccion}}</button>
+            {% else %}
+            <button class="nav-link" id="{{seccion}}-tab" data-bs-toggle="tab" data-bs-target="#{{seccion}}" type="button" role="tab"
+                aria-controls="{{seccion}}" aria-selected="true">{{seccion}}</button>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    
+    <div class="tab-content" id="myTabContent">
+        {% for seccion, items in datos | groupby('seccion') %}
+        {% if loop.index ==1 %}
+        <div class="tab-pane fade show active" id="{{seccion}}" role="tabpanel" aria-labelledby="{{seccion}}-tab">jajaja {{seccion}}</div>
+        {% else %}
+        <div class="tab-pane fade" id="{{seccion}}" role="tabpanel" aria-labelledby="{{seccion}}-tab">jijijij {{seccion}}</div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+
+
+    </ul>
+
+    </div>
+    {%include 'footer.html' %}
+

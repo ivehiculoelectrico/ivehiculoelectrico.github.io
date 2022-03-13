@@ -1,0 +1,23 @@
+<section class="container-xl py-5">
+    <h2 class="text-center my-5">{{seccion}}</h2>
+    <div class="row">
+        {% for item in items %}
+        <div class="col-md-4 mb-4">
+            <a onclick="document.getElementById('button_{{ item.orden }}').click()" class="text-white"
+                style="text-decoration: none" href="#">
+                <div class="card">
+                    <img class="card-img-top" src="img/producto6.jpg" alt="Imagen Producto">
+                    <div class="card-body text-center bg-primary text-white p-5">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis
+                            illo
+                            doloremque.</p>
+                        <p class="fs-1 fw-bold">{{item.producto}} </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <button hidden id="button_{{ item.orden }}" type="button" class="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target="#exampleModal" data-bs-v00="{{ item.producto }}" data-bs-v01="{{ item.orden }}">Open modal for @mdo</button>
+        {% endfor %}
+    </div>
+</section>
